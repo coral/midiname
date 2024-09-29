@@ -44,7 +44,7 @@ func (d *DB) Add(resp ai.Response, filename string) error {
 	if err != nil {
 		return err
 	}
-	_, err = d.db.Exec("INSERT INTO midi (title, artist, genres, comments, decade, year, confident, filename, hash) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", resp.Title, resp.Artist, genresJSON, resp.Comments, resp.Decade, resp.Year, resp.Confident, filename, hashString)
+	_, err = d.db.Exec("INSERT INTO midi (title, artist, genres, comments, decade,  confident, filename, hash) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", resp.Title, resp.Artist, genresJSON, resp.Comments, resp.Decade, resp.Confident, filename, hashString)
 	return err
 }
 

@@ -16,13 +16,14 @@ type AI struct {
 }
 
 type Response struct {
-	Title     string   `json:"title"`
-	Artist    string   `json:"artist"`
-	Genres    []string `json:"genres"`
-	Comments  string   `json:"comments"`
-	Decade    string   `json:"decade"`
-	Year      int      `json:"year"`
-	Confident bool     `json:"confident"`
+	Title      string   `json:"title"`
+	Artist     string   `json:"artist"`
+	Genres     []string `json:"genres"`
+	Comments   string   `json:"comments"`
+	Decade     string   `json:"decade"`
+	Confident  bool     `json:"confident"`
+	Annotation string   `json:"annotation"`
+	RealSong   bool     `json:"real_song"`
 }
 
 func New(prompt string) (*AI, error) {
@@ -41,7 +42,6 @@ func New(prompt string) (*AI, error) {
 }
 
 func (a *AI) TryFile(filename string, hint string) (Response, error) {
-	fmt.Println(hint)
 	req := openai.ChatCompletionRequest{
 		Model: "llama3.1-8b-instruct",
 		Messages: []openai.ChatCompletionMessage{

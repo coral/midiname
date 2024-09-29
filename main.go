@@ -48,12 +48,12 @@ func main() {
 				fmt.Println("invalid json", err)
 				continue
 			}
-			err = db.Add(resp, file.Name())
-			if err != nil {
-				fmt.Println("error adding to db", err)
-				continue
-			}
-			fmt.Printf("%s - %s\n", resp.Title, resp.Artist)
+			// err = db.Add(resp, file.Name())
+			// if err != nil {
+			// 	fmt.Println("error adding to db", err)
+			// 	continue
+			// }
+			fmt.Printf("%+v", resp)
 
 		}
 	}
