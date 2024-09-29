@@ -30,7 +30,6 @@ func ReadMidiFile(filename string) ([][]string, error) {
 			if err.Error() == "EOF" {
 				break
 			}
-			fmt.Println(record, filename)
 			return nil, fmt.Errorf("error reading CSV: %v", err)
 		}
 		// Trim whitespace from each field

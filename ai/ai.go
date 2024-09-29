@@ -40,7 +40,8 @@ func New(prompt string) (*AI, error) {
 	return &AI{prompt: promptString, client: client}, nil
 }
 
-func (a *AI) TryFile(filename string) (Response, error) {
+func (a *AI) TryFile(filename string, hint string) (Response, error) {
+	fmt.Println(hint)
 	req := openai.ChatCompletionRequest{
 		Model: "llama3.1-8b-instruct",
 		Messages: []openai.ChatCompletionMessage{
@@ -53,7 +54,7 @@ func (a *AI) TryFile(filename string) (Response, error) {
 
 	req.Messages = append(req.Messages, openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleUser,
-		Content: filename,
+		Content: fmt.Sprintf("filename: %s\nhint: %s", filename, hint),
 	})
 	resp, err := a.client.CreateChatCompletion(context.Background(), req)
 	if err != nil {
